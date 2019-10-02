@@ -14,4 +14,4 @@ class UserForm(forms.ModelForm):
 class UserProfileInfoForm(forms.ModelForm):
     class Meta():
         model = UserProfileInfo
-        fields = ('dob', 'citizenshipNo')
+        fields = ('dob', 'citizenshipNumber','address','mobileNumber')
