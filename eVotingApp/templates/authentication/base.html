@@ -1,27 +1,44 @@
 <!doctype html>
+<!doctype html>
 <html>
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"
+          name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
     <title>Electronic Voting</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link crossorigin="anonymous" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
 </head>
 <body>
-    <nav class="navbar navbar-default navbar-static-top">
-        <div class="container">
-            <ul class="nav navbar-nav">
-                <li><a class="navbar-brand" href="{% url 'index' %}">Home</a></li>
-                <li><a class="navbar-link" href="{% url 'admin:index' %}">Admin</a></li>
-                <li><a class="navbar-link" href="{% url 'auth:register' %}">Register</a></li>
-                <li><a class="navbar-link" href="{% url 'auth:user_login' %}">Login</a></li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="container">
-        {% block body_block %}
-        {% endblock %}
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="{% url 'index' %}">E-Voting</a>
+    <button aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler"
+            data-target="#navbarText" data-toggle="collapse" type="button">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'admin:index' %}">Admin</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'auth:register' %}">Register</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{% url 'auth:user_login' %}">Login</a>
+            </li>
+        </ul>
     </div>
+</nav>
+
+<div class="container">
+    {% block body_block %}
+    {% endblock %}
+</div>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </body>
 </html>
