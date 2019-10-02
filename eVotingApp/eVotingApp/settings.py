@@ -20,7 +20,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = ')v042&r(^t7pqq)@cr-)u4_zuwh&6zq^9ym!5of@48^gyegsjv'
+SECRET_KEY = 'l3a4vv!-zf_u^gk#hwo4wuuyks+u4w&li7))#ppvkid51&p6=!'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -74,17 +74,17 @@ WSGI_APPLICATION = 'eVotingApp.wsgi.application'
 # https://docs.djangoproject.com/en/2.2/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        # 'OPTIONS': {
-        #     'read_default_file': os.path.join(BASE_DIR, 'db.conf'),
-        # },
-        'NAME': 'Evoting',
-        'USER': 'evoting',
-        'PASSWORD': 'evoting123',
-        'HOST': 'localhost',
-        'PORT': '3306',
-    }
+   'default': {
+       'ENGINE': 'django.db.backends.mysql',
+       # 'OPTIONS': {
+       #     'read_default_file': os.path.join(BASE_DIR, 'db.conf'),
+       # },
+       'NAME': 'Evoting',
+       'USER': 'evoting',
+       'PASSWORD': 'evoting123',
+       'HOST': 'localhost',
+       'PORT': '3306',
+   }
 }
 
 
