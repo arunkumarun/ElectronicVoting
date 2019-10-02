@@ -6,7 +6,7 @@ from django.contrib.auth.models import User
 class UserProfileInfo(models.Model):
 
     # Create relationship
-    user = models.OneToOneField(User, on_delete=models.PROTECT)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # Adding extra attributes
     dob = models.DateField()
