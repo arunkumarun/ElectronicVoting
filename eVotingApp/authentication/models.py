@@ -10,9 +10,9 @@ class UserProfileInfo(models.Model):
 
     # Adding extra attributes
     dob = models.DateField()
-    citizenshipNumber = models.TextField()
+    citizenshipNumber = models.CharField(max_length=10, help_text='')
     address = models.TextField()
-    mobileNumber = models.TextField()
+    mobileNumber = models.CharField(max_length=10, help_text='')
     drivingLicenseNo = models.TextField(blank=True)
     passportNo = models.TextField(blank=True)
     gender = models.TextField()

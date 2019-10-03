@@ -1,21 +1,40 @@
 {% extends 'authentication/base.html' %}
 {% load staticfiles %}
 {% block body_block %}
-
+{% load widget_tweaks %}
 <div class="jumbotron">
     {% if registered %}
-        <h1>Thank You for Registering</h1>
+    <h1>Thank You for Registering</h1>
     {% else %}
-        <h1>Register</h1>
-        <h3>Fill out this form</h3>
+    <h1>Register</h1>
+    <h3>Fill out this form</h3>
 
-        <form enctype="multipart/form-data" method="post">
-            {% csrf_token %}
-            {{ user_form.as_p }}
-            {{ profile_form.as_p }}
-            <input type="submit" value="Register">
 
-        </form>
+    <form enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+
+        {% for field in user_form.visible_fields %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {% render_field field class="form-control" %}
+            {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+        </div>
+        {% endfor %}
+
+        {% for field in profile_form.visible_fields %}
+        <div class="form-group">
+            {{ field.label_tag }}
+            {% render_field field class="form-control" %}
+            {% if field.help_text %}
+            <small class="form-text text-muted">{{ field.help_text }}</small>
+            {% endif %}
+        </div>
+        {% endfor %}
+        <input type="submit" value="Register">
+
+    </form>
     {% endif %}
 
 </div>
