@@ -6,6 +6,12 @@ from authentication.models import UserProfileInfo
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput())
 
+    def __init__(self, *args, **kwargs):
+        super(UserForm, self).__init__(*args, **kwargs)
+
+        for fieldname in ['username']:
+            self.fields[fieldname].help_text = ""
+
     class Meta():
         model = User
         fields = ('username', 'email', 'password')
@@ -14,4 +20,4 @@ class UserForm(forms.ModelForm):
 class UserProfileInfoForm(forms.ModelForm):
     class Meta():
         model = UserProfileInfo
-        fields = ('dob', 'citizenshipNumber','address','mobileNumber')
+        fields = ('dob', 'citizenshipNumber', 'address', 'mobileNumber')
