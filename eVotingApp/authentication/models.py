@@ -9,13 +9,23 @@ class UserProfileInfo(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
     # Adding extra attributes
-    dob = models.DateField()
-    citizenshipNumber = models.CharField(max_length=10, help_text="")
-    address = models.TextField()
+    dob = models.DateField(help_text = "Please use the following format: YYYY-MM-DD")
+    citizenshipNumber = models.CharField(max_length=10, help_text="Enter your 10 digit citizenship Number")
+    street = models.CharField(max_length=30 , default ='')
+    suburb = models.CharField(max_length=30,default ='')
+    STATES = (('NSW','New South Wales'),('WA','Western Australia'),('SA','South Australia'),('TAS','Tasmania'),
+              ('VIC','Victoria'),('QLD','Queensland'))
+    state = models.CharField(max_length=20, choices=STATES, default = 'Select State', help_text = "Select Gender")
+    pincode = models.IntegerField(default = '')
     mobileNumber = models.CharField(max_length=10, help_text='')
-    drivingLicenseNo = models.TextField(blank=True)
-    passportNo = models.TextField(blank=True)
-    gender = models.TextField()
+    #drivingLicenseNo = models.CharField(max_length=10,blank=True)
+    #passportNo = models.CharField(max_length=20,blank=True)
+    GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'), ('U', 'Unspecified'))
+    EVIDENCES = (('DL','Driving License') , ('P','PASSPORT'))
+    evidence = models.CharField(max_length = 10, choices = EVIDENCES, default='Document Type',
+                                help_text = "Choose Identification Document")
+    gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default = 'Unspecified',
+                              help_text = "Select Gender")
 
     def __str__(self):
         return self.user.username
