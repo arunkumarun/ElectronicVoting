@@ -1,18 +1,6 @@
 {% extends 'authentication/base.html'%}
 {% block body_block %}
-
-<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
-<head>
-    <title> Sign In Form</title>
-</head>
-<link rel="stylesheet" type="text/css" href="style.css">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-<body>
 <div class="form">
-
     <h2> Sign In</h2>
     <form action="{% url 'auth:user_login' %}" method="post">
         {% csrf_token %}
@@ -37,8 +25,5 @@
 
     </form>
 </div>
-
-
-</body>
 {% endblock %}
 
