@@ -8,6 +8,9 @@ app_name = 'auth'
 urlpatterns = [
     url(r'^register/$', views.register, name='register'),
     url(r'^userLogin/$', views.user_login, name='user_login'),
+    url(r'^logout/$', views.user_logout, name='logout'),
+
+    # Password Reset URLs
     url(r'^password-reset/$', auth_views.PasswordResetView.as_view(
         template_name='authentication/password_reset.html',
         email_template_name='authentication/password_reset_email.html',

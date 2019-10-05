@@ -15,14 +15,14 @@ class UserProfileInfo(models.Model):
     suburb = models.CharField(max_length=30,default ='')
     STATES = (('NSW','New South Wales'),('WA','Western Australia'),('SA','South Australia'),('TAS','Tasmania'),
               ('VIC','Victoria'),('QLD','Queensland'))
-    state = models.CharField(max_length=20, choices=STATES, default = 'Select State', help_text = "Select Gender")
+    state = models.CharField(max_length=20, choices=STATES, default = 'Select State')
     pincode = models.IntegerField(default = '')
     mobileNumber = models.CharField(max_length=10, help_text='')
     #drivingLicenseNo = models.CharField(max_length=10,blank=True)
     #passportNo = models.CharField(max_length=20,blank=True)
     GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'), ('U', 'Unspecified'))
-    EVIDENCES = (('DL','Driving License') , ('P','PASSPORT'))
-    evidence = models.CharField(max_length = 10, choices = EVIDENCES, default='Document Type',
+    EVIDENCES = (('DL','Driving License') , ('P','Passport'))
+    evidence = models.CharField(max_length = 10, choices = EVIDENCES, default='DL',
                                 help_text = "Choose Identification Document")
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default = 'Unspecified',
                               help_text = "Select Gender")
