@@ -18,14 +18,14 @@ class UserProfileInfo(models.Model):
     state = models.CharField(max_length=20, choices=STATES, default = 'Select State')
     pincode = models.IntegerField(default = '')
     mobileNumber = models.CharField(max_length=10, help_text='')
-    #drivingLicenseNo = models.CharField(max_length=10,blank=True)
-    #passportNo = models.CharField(max_length=20,blank=True)
+    drivingLicenseNo = models.CharField(max_length=10,blank=True)
+    passportNo = models.CharField(max_length=20,blank=True)
     GENDER_CHOICES = (('M', 'Male'), ('F', 'Female'), ('U', 'Unspecified'))
-    EVIDENCES = (('DL','Driving License') , ('P','Passport'))
-    evidence = models.CharField(max_length = 10, choices = EVIDENCES, default='DL',
-                                help_text = "Choose Identification Document")
+    #EVIDENCES = (('DL','Driving License') , ('P','Passport'))
+    #evidence = models.CharField(max_length = 10, choices = EVIDENCES, default='DL',
+                                #help_text = "Choose Identification Document")
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default = 'Unspecified',
-                              help_text = "Select Gender")
+                                    help_text = "Select Gender")
 
     def __str__(self):
         return self.user.username

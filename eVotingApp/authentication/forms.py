@@ -20,5 +20,6 @@ class UserForm(forms.ModelForm):
 class UserProfileInfoForm(forms.ModelForm):
     class Meta():
         model = UserProfileInfo
-        fields = ('dob', 'citizenshipNumber', 'street','suburb','state','pincode', 'mobileNumber', 'evidence','gender')
+        fields = ('dob', 'citizenshipNumber', 'street','suburb','state','pincode', 'mobileNumber', 'drivingLicenseNo'
+                  ,'passportNo','gender')
 
