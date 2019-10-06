@@ -1,42 +1,174 @@
 {% extends 'authentication/base.html' %}
 {% load staticfiles %}
-{% block body_block %}
 {% load widget_tweaks %}
-<div class="jumbotron">
-    {% if registered %}
-    <h1>Thank You for Registering</h1>
-    {% else %}
-    <h1>Register</h1>
-    <h3>Fill out this form</h3>
+{% block body_block %}
+<div class="container-fluid  py-3 ">
+    <div class="row">
+        <div class="mx-auto col-sm-9">
+            {% if registered %}
+            <h1>Thank You for Registering</h1>
+            {% else %}
 
+            <div class="card-body">
+                <h3 class="text-center mb-4">User Registration</h3>
+            </div>
 
-    <form enctype="multipart/form-data" method="post">
-        {% csrf_token %}
+            <div class="card-body py-0">
+                <form enctype="multipart/form-data" method="post">
+                    {% csrf_token %}
+                    {{ user_form.non_field_errors }}
+                    <div class="input-box">
+                        <div class="form-group row">
+                            <div class="col form-group ">
+                                {{ user_form.first_name.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field user_form.first_name class="form-control" placeholder="First name" %}
+                            </div>
+                            <div class="col form-group">
+                                {{ user_form.last_name.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field user_form.last_name class="form-control" placeholder="Last name" %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col form-group ">
+                                {{ user_form.username.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field user_form.username class="form-control" placeholder="Username" %}
+                            </div>
+                            <div class="col form-group ">
+                                {{ user_form.email.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field user_form.email class="form-control" placeholder="Email" %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col form-group">
+                                {{ user_form.password.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field user_form.password class="form-control" placeholder="Password" %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col form-group">
+                                {{ profile_form.dob.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field profile_form.dob class="form-control" placeholder="DOB (YYYY-MM-DD)" %}
+                            </div>
+                            <div class="col form-group">
+                                {{ profile_form.citizenshipNumber.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field profile_form.citizenshipNumber class="form-control" placeholder="Citizenship Number" %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col form-group">
+                                {{ profile_form.street.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field profile_form.street class="form-control" placeholder="Street No" %}
+                            </div>
+                            <div class="col form-group">
+                                {{ profile_form.suburb.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field profile_form.suburb class="form-control" placeholder="Suburb" %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col form-group">
+                                {{ profile_form.state.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field profile_form.state class="form-control" %}
+                            </div>
+                            <div class="col form-group">
+                                {{ profile_form.pincode.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field profile_form.pincode class="form-control" placeholder="Pincode" %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col form-group">
+                                {{ profile_form.drivingLicenseNo.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field profile_form.drivingLicenseNo class="form-control" placeholder="Driving License No" %}
+                            </div>
+                            <div class="col form-group">
+                                {{ profile_form.passportNo.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field profile_form.passportNo class="form-control" placeholder="Passport No" %}
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <div class="col form-group">
+                                {{ profile_form.mobileNumber.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field profile_form.mobileNumber class="form-control" placeholder="Mobile Number" %}
+                            </div>
+                            <div class="col form-group">
+                                {{ profile_form.gender.errors }}
+                                {% if field.help_text %}
+                                <small class="form-text text-muted">{{ field.help_text }}</small>
+                                {% endif %}
+                                {% render_field profile_form.gender class="form-control" %}
+                            </div>
+                        </div>
+                    </div>
+                    <!--
+                    {% for field in user_form.visible_fields %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {% render_field field class="form-control" %}
+                        {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                    </div>
+                    {% endfor %}
 
-        {% for field in user_form.visible_fields %}
-        <div class="form-group">
-            {{ field.label_tag }}
-            {% render_field field class="form-control" %}
-            {% if field.help_text %}
-            <small class="form-text text-muted">{{ field.help_text }}</small>
+                    {% for field in profile_form.visible_fields %}
+                    <div class="form-group">
+                        {{ field.label_tag }}
+                        {% render_field field class="form-control" %}
+                        {% if field.help_text %}
+                        <small class="form-text text-muted">{{ field.help_text }}</small>
+                        {% endif %}
+                    </div>
+                    {% endfor %}-->
+                    <div class="input-box">
+                        <input type="submit" value="Register">
+                    </div>
+
+                </form>
+            </div>
             {% endif %}
+
         </div>
-        {% endfor %}
+    </div>
 
-        {% for field in profile_form.visible_fields %}
-        <div class="form-group">
-            {{ field.label_tag }}
-            {% render_field field class="form-control" %}
-            {% if field.help_text %}
-            <small class="form-text text-muted">{{ field.help_text }}</small>
-            {% endif %}
-        </div>
-        {% endfor %}
-        <input type="submit" value="Register">
-
-    </form>
-    {% endif %}
-
-</div>
-
-{% endblock %}
+    {% endblock %}

@@ -94,6 +94,54 @@ body: before{
     color: #03a9f4;
 }
 
+.container-fluid{
+    position: absolute;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 750px;
+    min-height: 400px;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+    padding: 40px;
+    box-sizing: border-box;
+}
+
+.container-fluid .form-row .input-box
+{
+    position: relative;
+    margin: 20px 0;
+}
+
+.container-fluid .input-box input{
+    width: 100%;
+    font-size: 16px;
+    border: none;
+    border-bottom: 2px solid #777;
+    outline: none;
+    padding: 10px;
+    padding-left: 25px;
+    box-sizing: border-box;
+    font-weight: bold;
+    color: #777;
+}
+
+
+
+
+.container-fluid .input-box input[type = "submit"]
+{
+    border: none;
+    cursor: pointer;
+    background: #03a9f4;
+    color: #fff;
+    font-weight: bold;
+    transition: 0.5s;
+}
+
+.container-fluid .input-box input[type = "submit"]:hover
+{
+    background: #a3eaf7;
+}
 
 
 
