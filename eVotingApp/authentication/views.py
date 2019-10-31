@@ -6,9 +6,14 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
 from django.contrib.auth.decorators import login_required
 
+import logging
+
 
 # Create your views here.
 from election.models import ElectionDetails
+
+
+log = logging.getLogger("MYAPP")
 
 
 def index(request):
@@ -52,7 +57,7 @@ def register(request):
             profile.user = user
 
             profile.save()
-
+            log.info("NEW USER REGISTERED "+ user.username)
             registered = True
         else:
             print(user_form.errors, profile_form.errors)
@@ -65,7 +70,6 @@ def register(request):
                                                                 'profile_form': profile_form,
                                                                 'registered': registered})
 
-
 def user_login(request):
     if request.method == 'POST':
         username = request.POST.get('username')
@@ -75,13 +79,14 @@ def user_login(request):
         if user:
             if user.is_active:
                 login(request, user)
+                log.info("USER LOGGED IN " + username)
                 return HttpResponseRedirect(reverse('home'))
 
             else:
                 return HttpResponse("ACCOUNT NOT ACTIVE")
         else:
             print("someone tried to login and failed!")
-            print("Username: {} and password {}".format(username, password))
+            # print("Username: {} and password {}".format(username, password))
             return HttpResponse("invalid login details supplied!")
     else:
         return render(request, 'authentication/login.html', {})
