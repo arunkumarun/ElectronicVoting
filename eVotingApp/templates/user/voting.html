@@ -1,6 +1,69 @@
 {% extends 'user/base.html' %}
 {% block body_block %}
 {% if user.is_authenticated %}
-<h1>Voting Page</h1>
+<meta charset="utf-8">
+<title>jQuery Show Hide Elements Using Radio Buttons</title>
+<style>
+    .box{
+        color: #fff;
+        padding: 20px;
+        display: none;
+        margin-top: 20px;
+    }
+    .Senate{ background: #DBDBDB; }
+    .Individual{ background: #DBDBDB; }
+    label{ margin-right: 15px; }
+</style>
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+<script>
+$(document).ready(function(){
+    $('input[type="radio"]').click(function(){
+        var inputValue = $(this).attr("value");
+        var targetBox = $("." + inputValue);
+        $(".box").not(targetBox).hide();
+        $(targetBox).show();
+    });
+});
+</script>
+</head>
+<body>
+    <div>
+        <h2><label><input type="radio" name="colorRadio" value="Senate"> Senate</label>
+            <hr>
+        <label><input type="radio" name="colorRadio" value="Individual"> Individual</label></h2>
+    </div>
+    <div class="Senate box"><div class="block">
+    <label>Senate 1</label>
+    <input type="text" />
+    </div>
+    <div class="block">
+    <label>Senate 2</label>
+    <input type="text" />
+    </div>
+    <div class="block">
+    <label>Senate 3</label>
+    <input type="text" />
+    </div>
+    <button type="button" onclick="alert('Thanks for Voting')">Vote</button>
+    </div>
+
+
+    <div class="Individual box">
+    <div class="block">
+    <label>Candidate 1</label>
+    <input type="text" />
+    </div>
+    <div class="block">
+    <label>Candidate 2</label>
+    <input type="text" />
+    </div>
+    <div class="block">
+    <label>Candidate 3</label>
+    <input type="text" />
+    </div>
+        <button type="button" onclick="alert('Thanks for Voting')">Vote</button>
+    </div>
+</body>
+
 {% endif %}
 {% endblock %}
