@@ -1,0 +1,36 @@
+{% extends 'user/base.html' %}
+{% block body_block %}
+{% if user.is_authenticated %}
+
+<!--<h1>Hi {{user.username}}</h1>-->
+<div>
+    <h1>Federal Election Instruction</h1>
+    <ul>
+        <li>Please select whether you want elect by senate or individual.</li>
+        <li>Select the election type by selecting the radio button.</li>
+        <li>Accordingly follow the election rules.</li>
+    </ul>
+</div>
+
+<div>
+    <h2>Election by Senate rules:</h2>
+    <ul>
+        <li>Choose the preference you want to vote(max:6 preferences).</li>
+        <li>Type the preference number in the box near the senate name.</li>
+        <li>Start numbering from 1 and end at 6.</li>
+        <li>Always the number 1 is the highest and the preference goes down.</li>
+    </ul>
+</div>
+
+<div>
+    <h2>Election by Individual rules:</h2>
+    <ul>
+        <li>Choose the preference you want to vote(max:12 preferences).</li>
+        <li>Type the preference number in the box near the Individuals name.</li>
+        <li>Start numbering from 1 and end at 12.</li>
+        <li>Always the number 1 is the highest and the preference goes down.</li>
+    </ul>
+</div>
+
+{% endif %}
+{% endblock %}
