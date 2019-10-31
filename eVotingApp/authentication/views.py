@@ -23,6 +23,12 @@ def home(request):
     }
     return render(request, 'user/home.html', context)
 
+@login_required
+def instruction(request):
+    return render(request, 'user/instruction.html',{})
+
+def voting(request):
+    return  render(request,'user/voting.html',{})
 
 @login_required
 def user_logout(request):

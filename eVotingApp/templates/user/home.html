@@ -3,7 +3,12 @@
 {% if user.is_authenticated %}
 <h1>Hi {{user.username}}</h1>
 {% for e in election %}
-<h1>{{e.election_date}}</h1>
+<h1>Election Date: {{e.election_date}}</h1>
+<h3>Start Time: {{e.start_time}}</h3>
+<h3>End Time: {{e.end_time}}</h3>
 {% endfor %}
+<center><a href="{% url 'auth:instruction' %}">Voting Instructions</a><br>
+    <a href="{% url 'auth:voting' %}">Click here to vote</a>
+</center>
 {% endif %}
 {% endblock %}
