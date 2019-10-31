@@ -8,13 +8,20 @@ from django.contrib.auth.decorators import login_required
 
 
 # Create your views here.
+from election.models import ElectionDetails
+
+
 def index(request):
     return render(request, 'authentication/index.html')
 
 
 @login_required
 def home(request):
-    return render(request, 'user/home.html')
+    election = ElectionDetails.objects.all()
+    context = {
+        'election': election
+    }
+    return render(request, 'user/home.html', context)
 
 
 @login_required

@@ -2,5 +2,8 @@
 {% block body_block %}
 {% if user.is_authenticated %}
 <h1>Hi {{user.username}}</h1>
+{% for e in election %}
+<h1>{{e.election_date}}</h1>
+{% endfor %}
 {% endif %}
 {% endblock %}
