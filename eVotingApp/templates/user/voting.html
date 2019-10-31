@@ -2,5 +2,19 @@
 {% block body_block %}
 {% if user.is_authenticated %}
 <h1>Voting Page</h1>
+<script src="static/js/index.js"></script>
+<label>
+<h1><input type="radio" name="vote" value="senate">Senate</h1><br>
+    <input class="box" type="text"  hidden="true"/>Senate 1 <br/>
+    <input class="box" type="text" hidden="true"/>Senate 2 <br/>
+    <input class="box" type="text"  hidden="true"/>Senate 3 <br/>
+
+<hr>
+
+<h1><input type="radio" name="vote" value="individual">Individual</h1><br>
+    <input class="box" type="text"  hidden="true"/> <br/>
+    <input class="box" type="text" hidden="true"/> <br/>
+    <input class="box" type="text"  hidden="true"/> <br/>
+</label>
 {% endif %}
 {% endblock %}
