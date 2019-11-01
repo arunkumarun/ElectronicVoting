@@ -16,6 +16,7 @@ Including another URLconf
 from django.conf.urls import url, include
 from django.contrib import admin
 from authentication import views
+from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 
 app_name = 'auth'
 
@@ -26,3 +27,5 @@ urlpatterns = [
     url(r'^auth/', include('authentication.urls')),
     url(r'^home/', include('election.urls')),
 ]
+
+urlpatterns += staticfiles_urlpatterns()

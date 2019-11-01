@@ -1,4 +1,5 @@
 {% extends 'user/base.html' %}
+{% load staticfiles %}
 {% block body_block %}
 {% if user.is_authenticated %}
 <meta charset="utf-8">
@@ -33,34 +34,40 @@ $(document).ready(function(){
         <label><input type="radio" name="colorRadio" value="Individual"> Individual</label></h2>
     </div>
     <div class="Senate box"><div class="block">
-    <label>Senate 1</label>
+        {% for p in party %}
+    <label>{{p.party_name}}</label>
+        <img src="/static/{{p.party_logo}}" class="img-thumbnail">
     <input type="text" />
+        {% endfor %}
     </div>
-    <div class="block">
-    <label>Senate 2</label>
-    <input type="text" />
-    </div>
-    <div class="block">
-    <label>Senate 3</label>
-    <input type="text" />
-    </div>
+    <!--<div class="block">-->
+    <!--<label>Senate 2</label>-->
+    <!--<input type="text" />-->
+    <!--</div>-->
+    <!--<div class="block">-->
+    <!--<label>Senate 3</label>-->
+    <!--<input type="text" />-->
+    <!--</div>-->
     <button type="button" onclick="alert('Thanks for Voting')">Vote</button>
     </div>
 
 
     <div class="Individual box">
+
+        {% for c in candidate %}
     <div class="block">
-    <label>Candidate 1</label>
+    <label>{{c.candidate_surname}} {{c.candidate_givenname}}</label>
     <input type="text" />
     </div>
-    <div class="block">
-    <label>Candidate 2</label>
-    <input type="text" />
-    </div>
-    <div class="block">
-    <label>Candidate 3</label>
-    <input type="text" />
-    </div>
+        {% endfor %}
+    <!--<div class="block">-->
+    <!--<label>Candidate 2</label>-->
+    <!--<input type="text" />-->
+    <!--</div>-->
+    <!--<div class="block">-->
+    <!--<label>Candidate 3</label>-->
+    <!--<input type="text" />-->
+    <!--</div>-->
         <button type="button" onclick="alert('Thanks for Voting')">Vote</button>
     </div>
 </body>

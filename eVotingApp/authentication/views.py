@@ -10,7 +10,7 @@ import logging
 
 
 # Create your views here.
-from election.models import ElectionDetails
+from election.models import ElectionDetails,Party,Candidate
 
 
 log = logging.getLogger("MYAPP")
@@ -28,6 +28,18 @@ def home(request):
     }
     return render(request, 'user/home.html', context)
 
+@login_required
+def voting(request):
+    party = Party.objects.all()
+    candidate = Candidate.objects.all()
+    print("Voting Page")
+    print(party)
+    print(candidate)
+    context = {
+        'party' : party,
+        'candidate' : candidate
+    }
+    return render(request, 'user/voting.html', context)
 @login_required
 def instruction(request):
     return render(request, 'user/instruction.html',{})
