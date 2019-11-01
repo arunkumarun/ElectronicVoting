@@ -33,13 +33,14 @@ $(document).ready(function(){
             <hr>
         <label><input type="radio" name="colorRadio" value="Individual"> Individual</label></h2>
     </div>
+    {% for p in party %}
     <div class="Senate box"><div class="block">
-        {% for p in party %}
+
     <label>{{p.party_name}}</label>
         <img src="/static/{{p.party_logo}}" class="img-thumbnail">
     <input type="text" />
-        {% endfor %}
     </div>
+        {% endfor %}
     <!--<div class="block">-->
     <!--<label>Senate 2</label>-->
     <!--<input type="text" />-->
@@ -53,11 +54,12 @@ $(document).ready(function(){
 
 
     <div class="Individual box">
+    {% for c in candidate %}
+        <div class="block">
 
-        {% for c in candidate %}
-    <div class="block">
     <label>{{c.candidate_surname}} {{c.candidate_givenname}}</label>
     <input type="text" />
+
     </div>
         {% endfor %}
     <!--<div class="block">-->

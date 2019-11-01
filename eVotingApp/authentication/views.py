@@ -32,9 +32,6 @@ def home(request):
 def voting(request):
     party = Party.objects.all()
     candidate = Candidate.objects.all()
-    print("Voting Page")
-    print(party)
-    print(candidate)
     context = {
         'party' : party,
         'candidate' : candidate
@@ -43,9 +40,6 @@ def voting(request):
 @login_required
 def instruction(request):
     return render(request, 'user/instruction.html',{})
-
-def voting(request):
-    return  render(request,'user/voting.html',{})
 
 @login_required
 def user_logout(request):
