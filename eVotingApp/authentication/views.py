@@ -38,15 +38,27 @@ def voting(request):
     }
     return render(request, 'user/voting.html', context)
 
+
+@login_required
+def partyvote(request):
+    if request.method == "POST":
+        party = Party.objects.all()
+        for p in party:
+            party_pref = PartyPreference()
+            party_pref.party_name = p.party_name
+            party_pref.party_preference = request.POST.get(p.party_name)
+            party_pref.save()
+    return render(request, 'user/home.html',{})
+
 @login_required
 def candidatevote(request):
     if request.method == "POST":
-        cand_pref = CandidatePreference()
         candidate = Candidate.objects.all()
         for c in candidate:
+            cand_pref = CandidatePreference()
             cand_pref.candidate_surname = c.candidate_surname
             cand_pref.candidate_preference=request.POST.get(c.candidate_surname)
-        cand_pref.save()
+            cand_pref.save()
     return render(request, 'user/home.html',{})
 
 @login_required

@@ -25,14 +25,14 @@
 <div>
     <h2><label><input type="radio" name="colorRadio" value="Senate"> Senate</label></h2>
     <div class="Senate box">
-        <form class="form-inline" method="post">
+        <form class="form-inline" action="/auth/partyvote/" method="post">
             {% csrf_token %}
             {% for p in party %}
             <div class="form-group block">
                 <label for="pref">{{p.party_name}}</label>
                 <img class="img-thumbnail" width="50px" height="50px" src="/static/{{p.party_logo}}">
                 <!--            <input id="input" type="text" class="form-control"/>-->
-                <select id="pref" class="form-control">
+                <select name="{{p.party_name}}" id="pref" class="form-control">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -42,7 +42,7 @@
                 </select>
             </div>
             {% endfor %}
-            <button class="btn btn-primary"  type="button" onclick="alert('Thanks for Voting')">Vote</button>
+            <button class="btn btn-primary" type="submit" value="partypref">Vote</button>
         </form>
     </div>
     <hr>

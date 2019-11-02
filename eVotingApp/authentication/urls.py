@@ -12,6 +12,7 @@ urlpatterns = [
     url(r'^voting/$', views.voting, name='voting'),
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^candidatevote/$', views.candidatevote, name='candidatevote'),
+    url(r'^partyvote/$', views.partyvote, name='partyvote'),
 
     # Password Reset URLs
     url(r'^password-reset/$', auth_views.PasswordResetView.as_view(
