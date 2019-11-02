@@ -10,8 +10,8 @@ import logging
 
 
 # Create your views here.
-from election.models import ElectionDetails,Party,Candidate,CandidatePreference,PartyPreference
-
+from election.models import ElectionDetails, Party, Candidate, CandidatePreference, PartyPreference
+from authentication.models import UserProfileInfo
 
 log = logging.getLogger("MYAPP")
 
@@ -23,10 +23,14 @@ def index(request):
 @login_required
 def home(request):
     election = ElectionDetails.objects.all()
+    userId = request.user.id
+    userProfileInfo = UserProfileInfo.objects.filter(user_id=userId)
     context = {
-        'election': election
+        'election': election,
+        'userProfileInfo': userProfileInfo
     }
     return render(request, 'user/home.html', context)
+
 
 @login_required
 def voting(request):
@@ -41,6 +45,10 @@ def voting(request):
 
 @login_required
 def partyvote(request):
+    userId = request.user.id
+    userProfile = UserProfileInfo.objects.filter(user_id=userId)
+    userProfile.update(voted=True)
+
     if request.method == "POST":
         party = Party.objects.all()
         for p in party:
@@ -49,6 +57,7 @@ def partyvote(request):
             party_pref.party_preference = request.POST.get(p.party_name)
             party_pref.save()
     return render(request, 'user/home.html',{})
+
 
 @login_required
 def candidatevote(request):
@@ -61,9 +70,11 @@ def candidatevote(request):
             cand_pref.save()
     return render(request, 'user/home.html',{})
 
+
 @login_required
 def instruction(request):
     return render(request, 'user/instruction.html',{})
+
 
 @login_required
 def user_logout(request):
@@ -99,6 +110,7 @@ def register(request):
     return render(request, 'authentication/registration.html', {'user_form': user_form,
                                                                 'profile_form': profile_form,
                                                                 'registered': registered})
+
 
 def user_login(request):
     if request.method == 'POST':

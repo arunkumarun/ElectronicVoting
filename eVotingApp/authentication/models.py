@@ -26,7 +26,7 @@ class UserProfileInfo(models.Model):
                                 #help_text = "Choose Identification Document")
     gender = models.CharField(max_length=10, choices=GENDER_CHOICES, default = 'Unspecified',
                                     help_text = "Select Gender")
-
+    voted = models.BooleanField(default=False)
     def __str__(self):
         return self.user.username
 

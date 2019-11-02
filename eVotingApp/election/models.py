@@ -6,6 +6,8 @@ class Party(models.Model):
     party_name = models.CharField(max_length=50, default='')
     party_logo = models.ImageField(upload_to='media/', default='/media/UAP.jpg')
 
+    def __str__(self):
+        return self.party_name
 
 class Candidate(models.Model):
     party = models.OneToOneField(Party, on_delete=models.CASCADE)
@@ -13,6 +15,8 @@ class Candidate(models.Model):
     candidate_surname = models.CharField(max_length=50, default='')
     candidate_givenname = models.CharField(max_length=50, default='')
 
+    def __str__(self):
+        return self.candidate_givenname+" "+self.candidate_surname
 
 class PartyPreference(models.Model):
     # party = models.OneToOneField(Party, on_delete=models.CASCADE)
