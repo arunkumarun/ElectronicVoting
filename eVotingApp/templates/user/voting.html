@@ -1,20 +1,78 @@
 {% extends 'user/base.html' %}
 {% load staticfiles %}
 {% block body_block %}
-{% if user.is_authenticated %}
-<meta charset="utf-8">
-<title>jQuery Show Hide Elements Using Radio Buttons</title>
 <style>
     .box{
-        color: #fff;
+        font-weight: bold;
         padding: 20px;
         display: none;
         margin-top: 20px;
     }
-    .Senate{ background: #DBDBDB; }
-    .Individual{ background: #DBDBDB; }
-    label{ margin-right: 15px; }
+    .Senate{
+        background: #DBDBDB;
+    }
+    .Individual{
+        background: #DBDBDB;
+    }
+    label{
+        margin-right: 15px;
+    }
+
+
 </style>
+
+{% if user.is_authenticated %}
+<div>
+    <h2><label><input type="radio" name="colorRadio" value="Senate"> Senate</label></h2>
+    <div class="Senate box">
+        <form class="form-inline">
+            {% for p in party %}
+            <div class="form-group block">
+                <label for="pref">{{p.party_name}}</label>
+                <img class="img-thumbnail" width="50px" height="50px" src="/static/{{p.party_logo}}">
+                <!--            <input id="input" type="text" class="form-control"/>-->
+                <select id="pref" class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                </select>
+            </div>
+            {% endfor %}
+            <button class="btn btn-primary"  type="button" onclick="alert('Thanks for Voting')">Vote</button>
+        </form>
+    </div>
+    <hr>
+    <h2><label><input type="radio" name="colorRadio" value="Individual"> Individual</label></h2>
+    <div class="Individual box">
+        <form class="form-inline">
+            {% for c in candidate %}
+            <div class="form-group block">
+                <label>{{c.candidate_surname}} {{c.candidate_givenname}}</label>
+                <select id="input" class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                    <option>6</option>
+                    <option>7</option>
+                    <option>8</option>
+                    <option>9</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                </select>
+            </div>
+            {% endfor %}
+            <button class="btn btn-primary" type="button" onclick="alert('Thanks for Voting')">Vote</button>
+        </form>
+    </div>
+</div>
+
+
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
 <script>
 $(document).ready(function(){
@@ -26,53 +84,6 @@ $(document).ready(function(){
     });
 });
 </script>
-</head>
-<body>
-    <div>
-        <h2><label><input type="radio" name="colorRadio" value="Senate"> Senate</label>
-            <hr>
-        <label><input type="radio" name="colorRadio" value="Individual"> Individual</label></h2>
-    </div>
-    {% for p in party %}
-    <div class="Senate box"><div class="block">
-
-    <label>{{p.party_name}}</label>
-        <img src="/static/{{p.party_logo}}" class="img-thumbnail">
-    <input type="text" />
-    </div>
-        {% endfor %}
-    <!--<div class="block">-->
-    <!--<label>Senate 2</label>-->
-    <!--<input type="text" />-->
-    <!--</div>-->
-    <!--<div class="block">-->
-    <!--<label>Senate 3</label>-->
-    <!--<input type="text" />-->
-    <!--</div>-->
-    <button type="button" onclick="alert('Thanks for Voting')">Vote</button>
-    </div>
-
-
-    <div class="Individual box">
-    {% for c in candidate %}
-        <div class="block">
-
-    <label>{{c.candidate_surname}} {{c.candidate_givenname}}</label>
-    <input type="text" />
-
-    </div>
-        {% endfor %}
-    <!--<div class="block">-->
-    <!--<label>Candidate 2</label>-->
-    <!--<input type="text" />-->
-    <!--</div>-->
-    <!--<div class="block">-->
-    <!--<label>Candidate 3</label>-->
-    <!--<input type="text" />-->
-    <!--</div>-->
-        <button type="button" onclick="alert('Thanks for Voting')">Vote</button>
-    </div>
-</body>
 
 {% endif %}
 {% endblock %}
