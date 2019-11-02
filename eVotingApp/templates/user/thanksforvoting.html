@@ -1,0 +1,6 @@
+{% extends 'user/base.html' %}
+{% block body_block %}
+{% if user.is_authenticated %}
+<h1> Thanks For Voting!!!</h1>
+{% endif %}
+{% endblock %}

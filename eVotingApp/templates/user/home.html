@@ -10,9 +10,9 @@
 <center>
     <a href="{% url 'auth:instruction' %}">Voting Instructions</a><br>
     {% if userProfileInfo.voted %}
-    <a href="{% url 'auth:voting' %}">Click here to vote</a>
-    {% else %}
     <h1>You have already Voted</h1>
+    {% else %}
+    <a href="{% url 'auth:voting' %}">Click here to vote</a>
     {% endif %}
 </center>
 {% endif %}

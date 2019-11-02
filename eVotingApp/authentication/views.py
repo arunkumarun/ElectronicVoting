@@ -24,7 +24,9 @@ def index(request):
 def home(request):
     election = ElectionDetails.objects.all()
     userId = request.user.id
-    userProfileInfo = UserProfileInfo.objects.filter(user_id=userId)
+    userProfileInfoQuery = UserProfileInfo.objects.filter(user_id=userId)
+    if len(userProfileInfoQuery) > 0:
+        userProfileInfo = userProfileInfoQuery[0]
     context = {
         'election': election,
         'userProfileInfo': userProfileInfo
@@ -56,11 +58,16 @@ def partyvote(request):
             party_pref.party_name = p.party_name
             party_pref.party_preference = request.POST.get(p.party_name)
             party_pref.save()
-    return render(request, 'user/home.html',{})
+    log.info("USER Voted " + request.user)
+    return render(request, 'user/thanksforvoting.html',{})
 
 
 @login_required
 def candidatevote(request):
+    userId = request.user.id
+    userProfile = UserProfileInfo.objects.filter(user_id=userId)
+    userProfile.update(voted=True)
+
     if request.method == "POST":
         candidate = Candidate.objects.all()
         for c in candidate:
@@ -68,7 +75,8 @@ def candidatevote(request):
             cand_pref.candidate_surname = c.candidate_surname
             cand_pref.candidate_preference=request.POST.get(c.candidate_surname)
             cand_pref.save()
-    return render(request, 'user/home.html',{})
+    log.info("USER Voted " + request.user)
+    return render(request, 'user/thanksforvoting.html',{})
 
 
 @login_required
