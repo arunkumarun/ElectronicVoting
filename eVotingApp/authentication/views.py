@@ -10,7 +10,7 @@ import logging
 
 
 # Create your views here.
-from election.models import ElectionDetails,Party,Candidate
+from election.models import ElectionDetails,Party,Candidate,CandidatePreference,PartyPreference
 
 
 log = logging.getLogger("MYAPP")
@@ -37,6 +37,18 @@ def voting(request):
         'candidate' : candidate
     }
     return render(request, 'user/voting.html', context)
+
+@login_required
+def candidatevote(request):
+    if request.method == "POST":
+        cand_pref = CandidatePreference()
+        candidate = Candidate.objects.all()
+        for c in candidate:
+            cand_pref.candidate_surname = c.candidate_surname
+            cand_pref.candidate_preference=request.POST.get(c.candidate_surname)
+        cand_pref.save()
+    return render(request, 'user/home.html',{})
+
 @login_required
 def instruction(request):
     return render(request, 'user/instruction.html',{})

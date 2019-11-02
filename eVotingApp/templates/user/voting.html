@@ -25,7 +25,8 @@
 <div>
     <h2><label><input type="radio" name="colorRadio" value="Senate"> Senate</label></h2>
     <div class="Senate box">
-        <form class="form-inline">
+        <form class="form-inline" method="post">
+            {% csrf_token %}
             {% for p in party %}
             <div class="form-group block">
                 <label for="pref">{{p.party_name}}</label>
@@ -46,12 +47,13 @@
     </div>
     <hr>
     <h2><label><input type="radio" name="colorRadio" value="Individual"> Individual</label></h2>
-    <div class="Individual box">
-        <form class="form-inline">
+    <div class="Individual box" method ="post">
+        <form class="form-inline" action="/auth/candidatevote/" method="post">
+            {% csrf_token %}
             {% for c in candidate %}
             <div class="form-group block">
                 <label>{{c.candidate_surname}} {{c.candidate_givenname}}</label>
-                <select id="input" class="form-control">
+                <select id="input" name="{{c.candidate_surname}}" class="form-control">
                     <option>1</option>
                     <option>2</option>
                     <option>3</option>
@@ -67,7 +69,7 @@
                 </select>
             </div>
             {% endfor %}
-            <button class="btn btn-primary" type="button" onclick="alert('Thanks for Voting')">Vote</button>
+            <button class="btn btn-primary" type="submit" value="candidatepref">Vote</button>
         </form>
     </div>
 </div>

@@ -15,14 +15,14 @@ class Candidate(models.Model):
 
 
 class PartyPreference(models.Model):
-    party = models.OneToOneField(Party, on_delete=models.CASCADE)
-
+    # party = models.OneToOneField(Party, on_delete=models.CASCADE)
+    party_name = models.CharField(max_length=50, default='')
     party_preference = models.IntegerField(default='')
 
 
 class CandidatePreference(models.Model):
-    candidate = models.OneToOneField(Candidate, on_delete=models.CASCADE)
-
+    # candidate = models.OneToOneField(Candidate, on_delete=models.CASCADE)
+    candidate_surname = models.CharField(max_length=50, default='')
     candidate_preference = models.IntegerField(default='')
 
 
