@@ -58,7 +58,7 @@ def partyvote(request):
             party_pref.party_name = p.party_name
             party_pref.party_preference = request.POST.get(p.party_name)
             party_pref.save()
-    log.info("USER Voted " + request.user)
+    log.info("USER Voted "+ request.user.username)
     return render(request, 'user/thanksforvoting.html',{})
 
 
@@ -75,7 +75,7 @@ def candidatevote(request):
             cand_pref.candidate_surname = c.candidate_surname
             cand_pref.candidate_preference=request.POST.get(c.candidate_surname)
             cand_pref.save()
-    log.info("USER Voted " + request.user)
+    log.info("USER Voted "+ request.user.username)
     return render(request, 'user/thanksforvoting.html',{})
 
 
