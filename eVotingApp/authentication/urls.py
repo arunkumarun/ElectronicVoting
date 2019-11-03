@@ -1,3 +1,4 @@
+# Includes URL patterns
 from django.conf.urls import url, include
 from django.urls import reverse_lazy
 from django.contrib.auth import views as auth_views

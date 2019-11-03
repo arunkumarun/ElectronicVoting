@@ -1,14 +1,15 @@
+# Modelling user interface and admin interface
 from django.db import models
 from django.contrib.auth.models import User
 
 
-# Create your models here.
+# Create UserProfileInfo models here.
 class UserProfileInfo(models.Model):
 
     # Create relationship
     user = models.OneToOneField(User, on_delete=models.CASCADE)
 
-    # Adding extra attributes
+    # Including additional user  attributes
     dob = models.DateField(help_text = "Please use the following format: YYYY-MM-DD")
     citizenshipNumber = models.CharField(max_length=10, help_text="Enter your 10 digit citizenship Number")
     street = models.CharField(max_length=30 , default ='')
@@ -30,6 +31,7 @@ class UserProfileInfo(models.Model):
     def __str__(self):
         return self.user.username
 
+# Creates AdminInfo models here.
 class AdminInfo(models.Model):
     first_name = models.CharField(max_length=256)
     last_name = models.CharField(max_length=256)

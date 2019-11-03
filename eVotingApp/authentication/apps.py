@@ -1,3 +1,5 @@
+# Creates new module for authentication
+
 from django.apps import AppConfig
 
 

@@ -1,3 +1,5 @@
+# Creates user information fields to admin
+
 from django import forms
 from django.contrib.auth.models import User
 from authentication.models import UserProfileInfo
