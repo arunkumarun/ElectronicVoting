@@ -28,8 +28,10 @@ My SQL is used for the current system,
 The below link will direct to install ,
 https://www.mysql.com/products/workbench/
 ```
-python manage.py migrate
-python manage.py makemigrations authentication
+create DATABASE evoting;
+```
+Also, install the following modules 
+```
 pip install bcrypt
 pip install pillow
 pip install django-widget-tweaks
@@ -39,5 +41,7 @@ pip install django-widget-tweaks
 To run the Electronic Senate Voting Application
 ```
 python manage.py runserver
+python manage.py migrate
+python manage.py makemigrations authentication
 ```
 
