@@ -11,7 +11,7 @@ Group 7
 | A1775044  | Varsita Narayanasamy                   | a1775044@student.adelaide.edu.au |
 
 ## Project description
-Electronic senate voting application, the project to implement a secure and robust web based Voting application for Australian Senate by following the design paradigm, principles and by incorporating the key security elements such as authentication, authorization, audit, confidentiality, and integrity.
+Electronic senate voting application, the project to implement a secure and robust web based Voting application for Australian Senate by following the design paradigm, principles and by incorporating the key security elements such as authentication, authorization, audit, confidentiality, integrity and availability.
 
 ## Prerequisites
 The tools required to run the code of our project are,
