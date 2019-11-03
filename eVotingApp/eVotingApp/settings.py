@@ -86,12 +86,12 @@ DATABASES = {
        #     'read_default_file': os.path.join(BASE_DIR, 'db.conf'),
        # },
        'NAME': 'Evoting',
-       'USER': 'evoting',
-       'PASSWORD': 'evoting123',
+       'USER': os.environ['EVOTING_DB_USER'],
+       'PASSWORD': os.environ['EVOTING_DB_PASS'],
        'HOST': 'localhost',
        'PORT': '3306',
    }
-}
+}\
 
 
 # Password validation
@@ -148,13 +148,13 @@ MEDIA_URL = '/media/'
 
 LOGIN_URL = '/auth/user_login'
 
-EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_PORT = 587
-# EMAIL_USE_TLS = True
-# EMAIL_HOST_USER = 'evotingdjango@gmail.com'
-# EMAIL_HOST_PASSWORD = 'evoting123'
+# EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ['EVOTING_EMAIL_USER'],
+EMAIL_HOST_PASSWORD = os.environ['EVOTING_EMAIL_PASS']
 
 LOGGING = {
     'version': 1,
