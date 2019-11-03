@@ -22,6 +22,12 @@ https://www.anaconda.com/distribution/
 conda create --name eVotingEnv django
 activate eVotingEnv (source activate eVotingEnv for Mac Users)
 cd eVotingApp
+```
+For Database: 
+My SQL is used for the current system,
+The below link will direct to install ,
+https://www.mysql.com/products/workbench/
+```
 python manage.py migrate
 python manage.py makemigrations authentication
 pip install bcrypt
@@ -34,3 +40,4 @@ To run the Electronic Senate Voting Application
 ```
 python manage.py runserver
 ```
+
