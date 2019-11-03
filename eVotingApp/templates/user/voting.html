@@ -24,7 +24,7 @@
 {% if user.is_authenticated %}
 <div>
     <h2><label><input type="radio" name="colorRadio" value="Senate"> Senate</label></h2>
-    <div class="Senate box">
+    <div class="Senate box" id="show-senate">
         <form class="form-inline" action="/auth/partyvote/" method="post">
             {% csrf_token %}
             {% for p in party %}
@@ -47,7 +47,7 @@
     </div>
     <hr>
     <h2><label><input type="radio" name="colorRadio" value="Individual"> Individual</label></h2>
-    <div class="Individual box" method ="post">
+    <div class="Individual box" method ="post" id="show-individual">
         <form class="form-inline" action="/auth/candidatevote/" method="post">
             {% csrf_token %}
             {% for c in candidate %}
@@ -80,9 +80,17 @@
 $(document).ready(function(){
     $('input[type="radio"]').click(function(){
         var inputValue = $(this).attr("value");
-        var targetBox = $("." + inputValue);
-        $(".box").not(targetBox).hide();
-        $(targetBox).show();
+        console.log(inputValue);
+        if(inputValue == "Senate") {
+            console.log("Senate Selected");
+            $('#show-senate').show();
+            $('#show-individual').hide();
+        }
+        else if(inputValue == "Individual"){
+            console.log("Individual Selected");
+            $('#show-senate').hide();
+            $('#show-individual').show();
+        }
     });
 });
 </script>

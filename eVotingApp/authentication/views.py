@@ -1,6 +1,6 @@
+# Modelling views for authentication
 from django.shortcuts import render
 from authentication.forms import UserForm, UserProfileInfoForm
-
 from django.contrib.auth import authenticate, login, logout
 from django.http import HttpResponseRedirect, HttpResponse
 from django.urls import reverse
@@ -9,7 +9,7 @@ from django.contrib.auth.decorators import login_required
 import logging
 
 
-# Create your views here.
+# Create views here.
 from election.models import ElectionDetails, Party, Candidate, CandidatePreference, PartyPreference
 from authentication.models import UserProfileInfo
 
